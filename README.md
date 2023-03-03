@@ -1,6 +1,8 @@
 # STUHOME_APP
 
-Codigo Front y Back de Stuhome app.
+Codigo Front y Back de Stuhome app. Version 0
+
+Cada mes voy Subiendo actualizaciones.
 
 #Definicion del Proyecto
 
