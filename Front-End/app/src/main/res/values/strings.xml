@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">StuhomeApp_Version_0</string>
+
+    <!--Start Strings-->
+    <string name="start_string">Our company will offer a selection of homes, with reasonable rents, for students. We also have the idea of implementing a user profile that will allow you to follow other users and talk to them.</string>
+
+    <!--Login Strings-->
+    <string name="login_title">Sign in</string>
+    <string name="login_String">Please login to your account</string>
+    <string name="login_username">Username</string>
+    <string name="login_forgotpassword">Forgot Password</string>
+    <string name="login_password">Password</string>
+    <string name="login_register">Don\'t have an account?</string>
+
+    <!--Register Strings-->
+    <string name="register_title">Sign up</string>
+    <string name="register_subtitle">Create your stuhome account.</string>
+    <string name="register_username">Please enter your username.</string>
+    <string name="register_name">Please enter your name.</string>
+    <string name="register_surname">Please enter your surname.</string>
+    <string name="register_description">Please enter your description.</string>
+    <string name="register_direcction">Please enter your direcction.</string>
+    <string name="register_studies">What do you study about.</string>
+    <string name="register_mail">Please enter your mail.</string>
+    <string name="register_password">Please enter your password.</string>
+    <string name="register_create">Create Account</string>
+    <string name="register_haveAccount">Already have an account?</string>
+
+    <!--Home Strings-->
+    <string name="Home_title">Welcome to Stuhome</string>
+    <string name="company_info1">Our purpose is to help students find housing with the best possible price.Our main marketing strategies will be the following: Television spots, ads in centers or locations verypopulated by our target audience (Students) and the emission of advertising through social networks.
+    </string>
+    <string name="company_info2">To reach more students, the most effective method is propaganda through people who are dedicated to the creation of content on social networks (Influencers). Another opportunity to produce a recognition of our application is advertising in universities and study centers for students of legal age.
+    </string>
+    <string name="company_info3">The success of our advertising campaign will be based on the ability we have to convince the public we are targeting to use our application, to facilitate the search for their home. A success would be to get a considered number of downloads of the application, since it would mean that our idea has interested many people and would encourage us to improve the aspects of the application that are not to the liking of the consumer.
+    </string>
+
+    <!-- Team info Strings-->
+    <string name="chen_info">I am currently studying a Higher Professional Degree in Development of multiplatform applications in Stucom I personally like the different environments to learn new things, and I hope to work in the development and design of applications in the future.</string>
+    <string name="pau_info">I studied a degree in marketing and economy. I’ve been working in dublin for 2 months. I have spent 2 years studying how to mixt tecnology and marketing.</string>
+    <string name="lhuis_info">I am an expert programmer in multimedia programming and mobile devices. I have spent a large part of my time in the intensive study of kotlin, an emerging language that offers a lot of possibilities.</string>
+</resources>
