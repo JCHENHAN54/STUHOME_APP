@@ -2,7 +2,7 @@
 
 Codigo Front y Back de Stuhome app. Version 0
 
-Cada mes voy Subiendo actualizaciones.
+Cada mes voy subiendo actualizaciones.
 
 #Definicion del Proyecto
 
