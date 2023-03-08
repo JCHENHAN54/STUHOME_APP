@@ -6,7 +6,7 @@ Cada mes voy Subiendo actualizaciones.
 
 #Definicion del Proyecto
 
-Nuestra idea consiste en crear una aplicación que ayude a todos aquellos estudiantes que tengan la necesidad de encontrar 
+Este idea consiste en crear una aplicación que ayude a todos aquellos estudiantes que tengan la necesidad de encontrar 
 vivienda tanto en una gran ciudad como en pueblos de alrededor. Esta idea va dirigida a todos los estudiantes que tengan 
 la necesidad de encontrar vivienda, ofreciéndoles un sistema de filtrado para que puedan encontrar el mejor precio y conocer 
 al resto de estudiantes que viven en una residencia.
