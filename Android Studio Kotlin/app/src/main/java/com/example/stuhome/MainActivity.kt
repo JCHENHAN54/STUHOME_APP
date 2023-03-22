@@ -1,20 +1,24 @@
 package com.example.stuhome
 
-import android.content.Intent
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Handler;
+import android.os.Bundle
+import android.util.Log
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Espera 2 segundos, y inicia la applicacion.
-        Handler().postDelayed(Runnable {
-            val intent = Intent(this@MainActivity, Login::class.java)
-            startActivity(intent)
-        }, 2000)
+        val quotesApi=RetrofitHelper.getInstance().create(QuotesApi::class.java)
+        //ejecutando coroutina
+        GlobalScope.launch {
+            val result=quotesApi.getQuotes()
+            if(result!=null)
+                //Comprobando Resultados
+                Log.d("ayush:",result.body().toString())
+        }
 
     }
 }

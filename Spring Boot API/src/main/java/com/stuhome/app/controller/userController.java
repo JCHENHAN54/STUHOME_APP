@@ -61,7 +61,24 @@ public class userController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	//Read profile information.
+	//Read user information.
+	@PostMapping("/GProfile")
+	public ResponseEntity<?> GetProfile(@RequestBody User user) {
+		// Buscar el nombre de usuario si exise o no.
+		List<User> lUser = userService.findByEmail(user.getEmail());
+		for(User e :lUser) {
+			user = e;
+		}
+		// Si encuentra el nombre de usuario y la contraseña esta correcta.
+		if (!lUser.isEmpty()) {
+			// Devolvel que todo ha ido bien. 200.
+			return ResponseEntity.status(HttpStatus.OK).body(user);
+		}
+		// Si no encuentra, pues 404 not found.
+		return ResponseEntity.notFound().build();
+	}
+	
+	//Read Profile Information.
 	@PostMapping("/pLogin")
 	public ResponseEntity<?> readProfile(@RequestBody User user) {
 		// Buscar el nombre de usuario si exise o no.
@@ -126,9 +143,9 @@ public class userController {
 		}
 		// Devolvel que todo ha ido bien. 200.
 
-		return ResponseEntity.ok("Nombre: " + oUser.get().getName() + "\n" + "Apellido: " + oUser.get().getApellido()
+		return ResponseEntity.ok("Nombre: " + oUser.get().getName() + "\n" + "Apellido: " + oUser.get().getSurname()
 				+ "\n" + "Description: " + oUser.get().getDescription() + "\n" + "Direction: "
-				+ oUser.get().getDireccion() + "\n" + "Email: " + oUser.get().getEmail() + "\n" + "Estudios: "
+				+ oUser.get().getDirection() + "\n" + "Email: " + oUser.get().getEmail() + "\n" + "Estudios: "
 				+ oUser.get().getStudies());
 	}
 
@@ -144,10 +161,11 @@ public class userController {
 		}
 		// Cogemos los datos del body y lo guardamos en BBDD.
 		lUser.get(0).setName(user.getName());
-		lUser.get(0).setApellido(user.getApellido());
+		lUser.get(0).setSurname(user.getSurname());
 		lUser.get(0).setDescription(user.getDescription());
-		lUser.get(0).setDireccion(user.getDireccion());
+		lUser.get(0).setDirection(user.getDirection());
 		lUser.get(0).setStudies(user.getStudies());
+		lUser.get(0).setImage(user.getImage());
 		return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(lUser.get(0)));
 	}
 
@@ -155,10 +173,8 @@ public class userController {
 	// Find all users:
 	@GetMapping
 	public List<User> readAll() {
-
 		List<User> users = StreamSupport.stream(userService.findAll().spliterator(), false)
 				.collect(Collectors.toList()); // Nos transforme en una lista.
-
 		return users;
 	}
 

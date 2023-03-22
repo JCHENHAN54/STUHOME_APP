@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragments.ProfileFragment"
+    android:background="#F6F4F4">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/green3">
+<!--        img-->
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="35dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/chen"
+                />
+
+        </RelativeLayout>
+
+<!--        user info-->
+        <RelativeLayout
+            android:layout_marginLeft="150dp"
+            android:layout_width="200dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:layout_marginTop="35dp"
+                android:id="@+id/profile_username">
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calle casp 120"
+                android:textSize="13dp"
+                android:textColor="@color/white"
+                android:layout_marginTop="60dp"
+                android:id="@+id/profile_direction">
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DAM2 Programming STUCOM"
+                android:textSize="13dp"
+                android:textColor="@color/white"
+                android:layout_marginTop="85dp"
+                android:id="@+id/profile_studies">
+            </TextView>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+<!--OPTIONS USER-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/edit_profile_btn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Edit Profile"
+        android:padding="20dp"
+        android:gravity="left"
+        android:textAllCaps="false"
+        android:background="@color/white"
+        android:drawableEnd="@drawable/ic_baseline_person_24"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="20dp"
+        android:gravity="left"
+        android:layout_marginTop="2dp"
+        android:text="Change Password"
+        android:background="@color/white"
+        android:textAllCaps="false"
+        android:drawableEnd="@drawable/baseline_vpn_key_24"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="20dp"
+        android:gravity="left"
+        android:text="My Properties"
+        android:background="@color/white"
+        android:layout_marginTop="2dp"
+        android:drawableEnd="@drawable/baseline_home_work_24"
+        android:textAllCaps="false"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="My Bookings"
+        android:padding="20dp"
+        android:gravity="left"
+        android:textAllCaps="false"
+        android:background="@color/white"
+        android:layout_marginTop="2dp"
+        android:drawableEnd="@drawable/baseline_shopping_cart_24"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="90dp"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/round_back_green_15"
+        android:text="Add Property"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:id="@+id/addPropertyBtn"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:text="Log out"
+        android:background="@drawable/round_back_white_15"
+        android:textColor="@color/green2"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:id="@+id/logOutBtn"
+        />
+
+</LinearLayout>

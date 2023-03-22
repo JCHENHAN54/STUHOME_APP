@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.AboutUsFragment"
+    android:orientation="vertical"
+    >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:paddingLeft="40dp"
+            android:text="About Us"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+<!--info chen-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="#EBFAF7">
+
+                <ImageView
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/chen"
+                    />
+                <TextView
+                    android:id="@+id/chenName"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:text="Jiahan Chen"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:layout_alignParentRight="true"/>
+                <TextView
+                    android:id="@+id/chenStudie"
+                    android:layout_below="@id/chenName"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:text="BackEnd Developer"
+                    android:textSize="16dp"
+                    android:layout_alignParentRight="true"/>
+                <TextView
+                    android:id="@+id/chenInfo"
+                    android:layout_below="@id/chenStudie"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/chen_info"
+                    android:paddingRight="10dp"
+                    android:justificationMode="inter_word"
+                    android:textSize="16dp"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+            <!--    info Lhuis:-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="#EBFAF7">
+                <ImageView
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/lhuis"
+                    />
+                <TextView
+                    android:id="@+id/lhuisName"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:text="Lhuis Enrique Marcelo"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:layout_alignParentRight="true"/>
+                <TextView
+                    android:id="@+id/lhuisStudie"
+                    android:layout_below="@id/lhuisName"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:text="FronEnd Developer"
+                    android:textSize="16dp"
+                    android:layout_alignParentRight="true"/>
+                <TextView
+                    android:id="@+id/lhuisInfo"
+                    android:layout_below="@id/lhuisStudie"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lhuis_info"
+                    android:justificationMode="inter_word"
+                    android:paddingRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="16dp"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+            <!--    info pau-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="#EBFAF7">
+
+                <ImageView
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/pau"
+                    />
+                <TextView
+                    android:id="@+id/pauName"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:text="Pau Guardia Vies"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:layout_alignParentRight="true"/>
+                <TextView
+                    android:id="@+id/pauStudie"
+                    android:layout_below="@id/pauName"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:text="Technical report"
+                    android:textSize="16dp"
+                    android:layout_alignParentRight="true"/>
+                <TextView
+                    android:id="@+id/pauInfo"
+                    android:layout_below="@id/pauStudie"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pau_info"
+                    android:justificationMode="inter_word"
+                    android:paddingRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="16dp"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
