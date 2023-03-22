@@ -26,4 +26,12 @@ interface APIRetrofit {
     @PUT
     suspend fun ApiEditProfile(@Url url: String, @Body user: User): Response<FeedBack>
 
+    //Api get info edit profile.
+    @POST
+    suspend fun ApiGetEditProfile(@Url url: String, @Body user: User): Response<User>
+
+    //Api change Password
+    @PUT
+    suspend fun ApiChangePassword(@Url url: String, @Body user: User): Response<FeedBack>
+
 }

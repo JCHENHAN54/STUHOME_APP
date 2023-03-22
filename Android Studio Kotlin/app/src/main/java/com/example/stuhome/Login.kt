@@ -1,9 +1,13 @@
 package com.example.stuhome
 
+import Global.UserGlobal
+import Global.UserLoginInfo
 import Retrofit.APIRetrofit
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +21,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 
 class Login : AppCompatActivity() {
@@ -32,15 +37,36 @@ class Login : AppCompatActivity() {
         val signUpTextview: TextView = findViewById(R.id.singUpBtn)
         val signinBtn: AppCompatButton = findViewById(R.id.signInBtn)
 
+        //Button show y hide password:
+        val showPassword :ImageView = findViewById(R.id.passwordIcon)
+
+        showPassword.setOnClickListener {
+            // Obtener el modo de visibilidad actual del EditText
+            val passwordVisibility = passEt.inputType
+            // Cambiar el modo de visibilidad de la contraseña
+            if (passwordVisibility == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+                passEt.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                showPassword.setImageResource(R.drawable.ic_baseline_remove_red_eye_24)
+            } else {
+                passEt.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                showPassword.setImageResource(R.drawable.close_eye)
+            }
+            // Mover el cursor al final del texto
+            passEt.setSelection(passEt.text.length)
+        }
+
         //Funciones setOnListener:
         signUpTextview.setOnClickListener {
             val intent: Intent = Intent(this, SignUp::class.java)
             startActivity(intent);
         }
 
+        val currentDate = Date()
+        println("La fecha actual es: $currentDate")
+
         //Funcion comprobacion de username y password:
         signinBtn.setOnClickListener {
-            val intent: Intent = Intent(this, Home::class.java)
+            val intent: Intent = Intent(this, ButtomBar::class.java)
             //pasar valores de edittext a String.
             val email:String  = emailEt.text.toString();
             val password:String = passEt.text.toString();
@@ -67,15 +93,14 @@ class Login : AppCompatActivity() {
                 .addConverterFactory(
                     GsonConverterFactory.create()).client(client).build()
             var respuesta = conexion.create(APIRetrofit::class.java)
-                .ApiLogin("login", User(0,password,"","",email,"","",""));
+                .ApiLogin("login", User(0,password,"","",email,"","","",""));
             withContext(Dispatchers.Main) {
                 //SI el usuario ha creado su cuenta correctamente, pues ira a la pagina de home de applicacion.
                 if (respuesta.isSuccessful) {
                     val duration = Toast.LENGTH_SHORT
                     val toast = Toast.makeText(applicationContext, "Welcome!!", duration)
                     toast.show()
-                    intent.putExtra("email",email)
-                    intent.putExtra("password",password)
+                    UserGlobal.UserLoginInfo = UserLoginInfo(email,password) //Guardar datos a Objeto Global.
                     startActivity(intent); //ir al Home Activity.
                 }else {
                     val duration = Toast.LENGTH_SHORT
@@ -85,7 +110,6 @@ class Login : AppCompatActivity() {
             }
         }
     }
-
 }
 
 

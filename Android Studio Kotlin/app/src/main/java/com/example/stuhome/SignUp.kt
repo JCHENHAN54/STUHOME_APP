@@ -78,7 +78,7 @@ class SignUp : AppCompatActivity() {
                 .addConverterFactory(
                     GsonConverterFactory.create()).client(client).build()
             var respuesta = conexion.create(APIRetrofit::class.java)
-                .ApiRegister("signin", User(0,password,name,surname,mail,description,studies,direction));
+                .ApiRegister("signin", User(0,password,name,surname,mail,description,studies,direction,""));
             withContext(Dispatchers.Main) {
                 //SI el usuario ha creado su cuenta correctamente, pues ira a la pagina de home de applicacion.
                 if (respuesta.isSuccessful) {

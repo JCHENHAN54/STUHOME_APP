@@ -1,17 +1,20 @@
 package com.example.stuhome.Fragments
 
+import Global.UserGlobal
+import Global.UserProfileImg
 import Retrofit.APIRetrofit
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
-import com.example.stuhome.EditProfile
-import com.example.stuhome.R
-import com.example.stuhome.Login
+import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.example.stuhome.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,30 +36,37 @@ class ProfileFragment : Fragment() {
         // que en los activitys.
 
         val username: TextView = view.findViewById<TextView>(R.id.profile_username);
-        val direction: TextView = view.findViewById<TextView>(R.id.profile_direction);
-        val studies: TextView = view.findViewById<TextView>(R.id.profile_studies);
-        val editProfileBtn: AppCompatButton =
-            view.findViewById<AppCompatButton>(R.id.edit_profile_btn);
+        val email: TextView = view.findViewById<TextView>(R.id.profile_email);
+        val profileImg: ImageView = view.findViewById<ImageView>(R.id.user_img);
+
+        val logOutBtn: AppCompatButton = view.findViewById(R.id.logOutBtn)
+        val editProfileBtn: AppCompatButton = view.findViewById<AppCompatButton>(R.id.edit_profile_btn);
+        val changePassBtn: AppCompatButton = view.findViewById<AppCompatButton>(R.id.change_pass_btn);
+        val createPropertyBtn :AppCompatButton = view.findViewById<AppCompatButton>(R.id.addPropertyBtn);
 
         //Pasar el username y el password que hemos introducido en Activity Login:
         val intent = requireActivity().intent;
-        val loginEmail = intent.getStringExtra("email");
-        val loginPass = intent.getStringExtra("password");
-
-        val logOutBtn: AppCompatButton = view.findViewById(R.id.logOutBtn)
+        val loginEmail = UserGlobal.UserLoginInfo.userEmail
+        val loginPass = UserGlobal.UserLoginInfo.password
 
         //llamar funcion profileLogin para mostrar el informacion del perfil del usuario:
-        profileLogin(loginEmail.toString(), loginPass.toString(), username, direction, studies);
+        profileLogin(loginEmail, loginPass, username, email,profileImg);
 
-        //A dar el button logout, ira a la pagina de signin.
+        //Funcion Button:
         logOutBtn.setOnClickListener {
             val intent = Intent(activity, Login::class.java)
             startActivity(intent)
         }
-
         editProfileBtn.setOnClickListener {
             val intent = Intent(activity, EditProfile::class.java)
-            intent.putExtra("loginEmail",loginEmail.toString())
+            startActivity(intent)
+        }
+        changePassBtn.setOnClickListener {
+            val intent = Intent(activity, ChangePassword::class.java)
+            startActivity(intent)
+        }
+        createPropertyBtn.setOnClickListener {
+            val intent = Intent(activity, CreateProperty::class.java)
             startActivity(intent)
         }
 
@@ -64,7 +74,7 @@ class ProfileFragment : Fragment() {
         return view
     }
 
-    fun profileLogin(loginEmail: String, loginPassword: String, username: TextView, direction: TextView, studies: TextView
+    fun profileLogin(loginEmail: String, loginPassword: String, username: TextView, email: TextView, profileImg: ImageView
     ) {
         //Codigo Retrofit:
         CoroutineScope(Dispatchers.IO).launch {
@@ -78,19 +88,32 @@ class ProfileFragment : Fragment() {
             var respuesta = conexion.create(APIRetrofit::class.java)
                 .ApiProfileLogin(
                     "pLogin",
-                    User(0, loginPassword, "", "", loginEmail, "", "", "")
+                    User(0, loginPassword, "", "", loginEmail, "", "", "","")
                 );
             withContext(Dispatchers.Main) {
                 //SI el usuario ha creado su cuenta correctamente, pues ira a la pagina de home de applicacion.
                 if (respuesta.isSuccessful) {
                     var user = respuesta.body();
                     //Pasar los infos del usuario al perfil.
-                    username.setText("Hello, " + user?.name + " " + user?.apellido);
-                    direction.setText("Direction: " + user?.direccion);
-                    studies.setText("Studies: " + user?.studies);
+                    username.setText(user?.name + " " + user?.surname);
+                    email.setText(user?.email);
+                    //Inicializar el valor de Comprobar si el UserProfileImg esta inicializado o no.
+                    try {
+                        //Si esta iniciado pues insertar la ruta al imageView.
+                        Glide.with(this@ProfileFragment)
+                            .load(Uri.parse(user?.image))
+                            .into(profileImg)
+                    } catch (e: UninitializedPropertyAccessException) {
+                        UserGlobal.UserProfileImg = UserProfileImg("")
+                    }
+
                 }
             }
         }
+    }
+
+    fun onBackPressed() {
+        // No hacemos nada
     }
 
 }

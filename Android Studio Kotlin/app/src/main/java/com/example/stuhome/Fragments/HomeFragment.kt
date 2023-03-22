@@ -1,10 +1,13 @@
 package com.example.stuhome.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import com.example.stuhome.AboutUs
 import com.example.stuhome.R
 
 class HomeFragment : Fragment() {
@@ -17,9 +20,18 @@ class HomeFragment : Fragment() {
         //Aqui es Donde se pone las creaciones de variables y funciones. funciona igualmente
         // que en los activitys.
 
+//        val aboutUsIcon: ImageView = view.findViewById<ImageView>(R.id.aboutUs_icon)
 
-
+//        aboutUsIcon.setOnClickListener{
+//            val intent = Intent(activity, AboutUs::class.java)
+//            startActivity(intent)
+//        }
         // Inflate the layout for this fragment
         return view
     }
+
+    fun onBackPressed() {
+        // No hacemos nada
+    }
+
 }
