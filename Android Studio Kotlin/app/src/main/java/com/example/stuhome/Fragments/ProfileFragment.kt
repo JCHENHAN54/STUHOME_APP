@@ -81,7 +81,7 @@ class ProfileFragment : Fragment() {
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
             val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
-            val conexion = Retrofit.Builder().baseUrl("http://10.0.2.2:8080/api/users/")
+            val conexion = Retrofit.Builder().baseUrl("http://10.0.2.2:8080/api/user/")
                 .addConverterFactory(
                     GsonConverterFactory.create()
                 ).client(client).build()

@@ -1,15 +1,7 @@
 package com.stuhome.app.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "property")
@@ -24,6 +16,9 @@ public class Property implements Serializable {
 	@ManyToOne
     @JoinColumn(name = "user_id")
     private User user_id;
+	
+	@Transient
+	private String userEmail;
 
 	@Column(length = 50)
 	private String property_name;
@@ -46,11 +41,14 @@ public class Property implements Serializable {
 	public Property() {
 	}
 
-	public Property(User user_id, String property_name, String property_address, String property_city,
-			String property_description, String image, boolean airConditioning, boolean petfriendly, boolean parking,
-			boolean wifi, boolean washer, boolean smoking, int property_price, String additional_notes) {
+	public Property(Long id, User user_id, String userEmail, String property_name, String property_address,
+			String property_city, String property_description, String image, boolean airConditioning,
+			boolean petfriendly, boolean parking, boolean wifi, boolean washer, boolean smoking, int property_price,
+			String additional_notes) {
 		super();
+		this.id = id;
 		this.user_id = user_id;
+		this.userEmail = userEmail;
 		this.property_name = property_name;
 		this.property_address = property_address;
 		this.property_city = property_city;
@@ -64,6 +62,14 @@ public class Property implements Serializable {
 		this.smoking = smoking;
 		this.property_price = property_price;
 		this.additional_notes = additional_notes;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
 	public Long getId() {
@@ -188,12 +194,13 @@ public class Property implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Property [id=" + id + ", user_id=" + user_id + ", property_name=" + property_name
-				+ ", property_address=" + property_address + ", property_city=" + property_city
+		return "Property [id=" + id + ", user_id=" + user_id + ", userEmail=" + userEmail + ", property_name="
+				+ property_name + ", property_address=" + property_address + ", property_city=" + property_city
 				+ ", property_description=" + property_description + ", image=" + image + ", airConditioning="
 				+ airConditioning + ", petfriendly=" + petfriendly + ", parking=" + parking + ", wifi=" + wifi
 				+ ", washer=" + washer + ", smoking=" + smoking + ", property_price=" + property_price
 				+ ", additional_notes=" + additional_notes + "]";
 	}
+	
 
 }

@@ -1,9 +1,11 @@
 package Retrofit
 
 import model.FeedBack
+import model.Property
 import model.User
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Url
@@ -34,4 +36,7 @@ interface APIRetrofit {
     @PUT
     suspend fun ApiChangePassword(@Url url: String, @Body user: User): Response<FeedBack>
 
+    //Api Create Property
+    @POST
+    suspend fun  ApiCreateProperty(@Url url:String, @Body property: Property): Response<FeedBack>
 }

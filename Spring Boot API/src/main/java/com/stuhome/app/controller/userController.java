@@ -19,16 +19,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.stuhome.app.model.Property;
 import com.stuhome.app.model.User;
+import com.stuhome.app.service.Property.PropertyService;
 import com.stuhome.app.service.User.UserService;
 
 @RestController
 //Va devolber formato json.
-@RequestMapping("/api/users")
+@RequestMapping("/api/user")
 public class userController {
 
 	@Autowired
 	private UserService userService;
+
+	/* =============== API Rest User =============== */
 
 	// Create a new user (Crear) Signin
 	@PostMapping("/signin")
@@ -38,9 +42,9 @@ public class userController {
 		String passCifrada = DigestUtils.md5Hex(pass);
 		user.setPassword(passCifrada);
 		List<User> lUser = userService.findByEmail(user.getEmail());
-		//Solo inserta cuando el mail no esta duplicada.
-		if(lUser.isEmpty())
-		return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
+		// Solo inserta cuando el mail no esta duplicada.
+		if (lUser.isEmpty())
+			return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
 		return (ResponseEntity<?>) ResponseEntity.notFound();
 	}
 
@@ -60,13 +64,13 @@ public class userController {
 		// Si no encuentra, pues 404 not found.
 		return ResponseEntity.notFound().build();
 	}
-	
-	//Read user information.
+
+	// Read user information.
 	@PostMapping("/GProfile")
 	public ResponseEntity<?> GetProfile(@RequestBody User user) {
 		// Buscar el nombre de usuario si exise o no.
 		List<User> lUser = userService.findByEmail(user.getEmail());
-		for(User e :lUser) {
+		for (User e : lUser) {
 			user = e;
 		}
 		// Si encuentra el nombre de usuario y la contraseña esta correcta.
@@ -77,8 +81,8 @@ public class userController {
 		// Si no encuentra, pues 404 not found.
 		return ResponseEntity.notFound().build();
 	}
-	
-	//Read Profile Information.
+
+	// Read Profile Information.
 	@PostMapping("/pLogin")
 	public ResponseEntity<?> readProfile(@RequestBody User user) {
 		// Buscar el nombre de usuario si exise o no.
@@ -86,7 +90,7 @@ public class userController {
 		String pass = user.getPassword();
 		String passCifrada = DigestUtils.md5Hex(pass);
 		List<User> lUser = userService.findByEmailAndPassword(user.getEmail(), passCifrada);
-		for(User e :lUser) {
+		for (User e : lUser) {
 			user = e;
 		}
 		// Si encuentra el nombre de usuario y la contraseña esta correcta.

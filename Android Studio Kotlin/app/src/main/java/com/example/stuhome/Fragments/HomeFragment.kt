@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.stuhome.AboutUs
@@ -20,12 +21,20 @@ class HomeFragment : Fragment() {
         //Aqui es Donde se pone las creaciones de variables y funciones. funciona igualmente
         // que en los activitys.
 
-//        val aboutUsIcon: ImageView = view.findViewById<ImageView>(R.id.aboutUs_icon)
+        val aboutUsIcon: ImageView = view.findViewById<ImageView>(R.id.aboutUs_icon)
+        val startSeachEt: EditText = view.findViewById<EditText>(R.id.startSearch)
 
-//        aboutUsIcon.setOnClickListener{
-//            val intent = Intent(activity, AboutUs::class.java)
-//            startActivity(intent)
-//        }
+        startSeachEt.setOnClickListener{
+            val fragmentManager = parentFragmentManager
+            val fragmentTransition = fragmentManager.beginTransaction()
+            fragmentTransition.replace(R.id.frame_layout,SearchFragment())
+            fragmentTransition.commit()
+        }
+
+        aboutUsIcon.setOnClickListener{
+            val intent = Intent(activity, AboutUs::class.java)
+            startActivity(intent)
+        }
         // Inflate the layout for this fragment
         return view
     }

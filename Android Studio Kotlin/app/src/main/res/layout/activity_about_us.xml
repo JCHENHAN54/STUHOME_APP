@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:src="@drawable/baseline_arrow_back_ios_white" />
+            android:src="@drawable/baseline_arrow_back_24" />
 
         <TextView
             android:id="@+id/title_text"
@@ -61,13 +61,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp">
+                    android:orientation="vertical">
                     <ImageView
-                        android:layout_width="200dp"
+                        android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:background="@drawable/chen"/>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/chen"/>
                 </LinearLayout>
 
                 <TextView
@@ -81,6 +80,7 @@
                     android:textSize="25dp"/>
 
                 <TextView
+                    android:paddingBottom="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -88,22 +88,6 @@
                     android:layout_marginTop="8dp"
                     android:textSize="16dp"
                     android:text="@string/chen_info"/>
-
-                <!--Social Links-->
-                <LinearLayout
-                    android:layout_marginTop="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <!--Linkedin-->
-                    <ImageView
-                        android:id="@+id/linkedin_chen"
-                        android:background="@drawable/linkedin"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="20dp">
-                    </ImageView>
-                </LinearLayout>
-
             </LinearLayout>
 
             <!--Pau Guardia-->
@@ -121,13 +105,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp">
+                    android:orientation="vertical">
                     <ImageView
-                        android:layout_width="200dp"
+                        android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:background="@drawable/pau"/>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/pau"/>
                 </LinearLayout>
 
                 <TextView
@@ -147,23 +130,8 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginTop="8dp"
                     android:textSize="16dp"
+                    android:paddingBottom="20dp"
                     android:text="@string/pau_info"/>
-
-                <!--Social Links-->
-                <LinearLayout
-                    android:layout_marginTop="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <!--Linkedin-->
-                    <ImageView
-                        android:id="@+id/linkedin_pau"
-                        android:background="@drawable/linkedin"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="20dp">
-                    </ImageView>
-                </LinearLayout>
-
             </LinearLayout>
 
             <!--Lhuis Enrique-->
@@ -182,14 +150,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp">
+                    android:orientation="vertical">
                     <ImageView
                         android:id="@+id/linkedin_lhuis"
-                        android:layout_width="200dp"
+                        android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:background="@drawable/lhuis"/>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/lhuis"/>
                 </LinearLayout>
 
                 <TextView
@@ -203,6 +170,7 @@
                     android:textSize="25dp"/>
 
                 <TextView
+                    android:paddingBottom="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -210,20 +178,6 @@
                     android:layout_marginTop="8dp"
                     android:textSize="16dp"
                     android:text="@string/lhuis_info"/>
-
-                <!--Social Links-->
-                <LinearLayout
-                    android:layout_marginTop="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <!--Linkedin-->
-                    <ImageView
-                        android:background="@drawable/linkedin"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="20dp">
-                    </ImageView>
-                </LinearLayout>
 
             </LinearLayout>
 

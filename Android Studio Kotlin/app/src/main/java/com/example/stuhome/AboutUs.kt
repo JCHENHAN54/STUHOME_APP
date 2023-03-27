@@ -16,24 +16,6 @@ class AboutUs : AppCompatActivity() {
         backIcon.setOnClickListener{
             finish()
         }
-
-        //Control de social Links:
-        val linkedinChen = findViewById<ImageView>(R.id.linkedin_chen)
-        val linkedinPau = findViewById<ImageView>(R.id.linkedin_pau)
-        val linkedinLhuis = findViewById<ImageView>(R.id.linkedin_lhuis)
-
-        linkedinChen.setOnClickListener{
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/jiahan-chen-1211731a0"))
-            startActivity(intent)
-        }
-        linkedinPau.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/pau-guardia-vies-02172b239"))
-            startActivity(intent)
-        }
-        linkedinLhuis.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/lhuis-enrique-marcelo-sotelo-241000147"))
-            startActivity(intent)
-        }
     }
     override fun onBackPressed() {
         // No hacemos nada
