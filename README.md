@@ -32,6 +32,8 @@ Funcionalidades:
   4. Funcionalidad de búsqueda.
   5. Perfil de usuario.
   6. Implementación futura de un sistema de chat.
+  
+  ![image](https://user-images.githubusercontent.com/57107814/228256782-a7a953c5-d230-4310-9282-e653f268f4d3.png)
 
 En cuanto a la parte de diseño de la interfaz de usuario (UI) y experiencia de usuario (UX), hemos utilizado la herramienta Figma. A través de ella, hemos creado un flowchart de la aplicación que muestra la interconexión de las diferentes pantallas y la navegación del usuario a través de ellas. Este flowchart nos ha permitido visualizar de manera clara la estructura de la aplicación y realizar los ajustes necesarios para mejorar la experiencia del usuario. Si necesitas más información o tienes alguna pregunta adicional, no dudes en hacérmelo saber.
 
