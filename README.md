@@ -3,7 +3,7 @@
 Codigo Front y Back de Stuhome app. 
 Cada mes voy subiendo actualizaciones.
 
-# Definicion del Proyecto
+Definicion del Proyecto: 
 
 Este idea consiste en crear una aplicación que ayude a todos aquellos estudiantes que tengan la necesidad de encontrar 
 vivienda tanto en una gran ciudad como en pueblos de alrededor. Esta idea va dirigida a todos los estudiantes que tengan 
@@ -17,7 +17,7 @@ Nuestra empresa ofrecerá una selección de viviendas, con alquileres razonables
 También tenemos la idea de implementar un perfil de usuario que te permitirá seguir a otros usuarios 
 y hablar con ellos. Las principales características que ofrecerá nuestra aplicación:
 
-#Informe Tecnico.
+# Informe Tecnico.
 
 He utilizado herramientas como Spring Boot para generar y desarrollar una API Rest que se conecta con la aplicación desarrollada en Android Studio. La aplicación cuenta con diversas pantallas funcionales, tales como el proceso de inicio de sesión, registro de usuario, pantalla principal, búsqueda y perfil de usuario. Además, se tiene previsto implementar una funcionalidad de chat en un futuro próximo.
 
