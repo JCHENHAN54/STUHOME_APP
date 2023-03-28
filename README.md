@@ -3,7 +3,7 @@
 Codigo Front y Back de Stuhome app. 
 Cada mes voy subiendo actualizaciones.
 
-#Definicion del Proyecto
+# Definicion del Proyecto
 
 Este idea consiste en crear una aplicación que ayude a todos aquellos estudiantes que tengan la necesidad de encontrar 
 vivienda tanto en una gran ciudad como en pueblos de alrededor. Esta idea va dirigida a todos los estudiantes que tengan 
