@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import com.example.stuhome.AboutUs
 import com.example.stuhome.R
@@ -22,9 +23,10 @@ class HomeFragment : Fragment() {
         // que en los activitys.
 
         val aboutUsIcon: ImageView = view.findViewById<ImageView>(R.id.aboutUs_icon)
-        val startSeachEt: EditText = view.findViewById<EditText>(R.id.startSearch)
+        val startSeachBtn: AppCompatButton = view.findViewById<AppCompatButton>(R.id.start_searchBtn)
 
-        startSeachEt.setOnClickListener{
+        //Pasar de un fragmento a otro.
+        startSeachBtn.setOnClickListener{
             val fragmentManager = parentFragmentManager
             val fragmentTransition = fragmentManager.beginTransaction()
             fragmentTransition.replace(R.id.frame_layout,SearchFragment())

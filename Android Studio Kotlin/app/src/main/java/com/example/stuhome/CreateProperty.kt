@@ -1,18 +1,20 @@
 package com.example.stuhome
 
 import Global.UserGlobal
-import Global.UserLoginInfo
+import Global.UserProfileImg
+import Global.UserPropertyImg
 import Retrofit.APIRetrofit
 import android.content.Intent
-import android.media.Image
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Switch
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
-import com.example.stuhome.Fragments.HomeFragment
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,6 +27,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class CreateProperty : AppCompatActivity() {
+
+    private var rutaImg: String? = null
+    private lateinit var PropertyImg: ImageView
+    private lateinit var text: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_property)
@@ -39,7 +46,6 @@ class CreateProperty : AppCompatActivity() {
         }
 
         //Variables para crear properties.
-        val PropertyImage = findViewById<AppCompatButton>(R.id.prepertyImages)
         val PropertyName = findViewById<EditText>(R.id.property_name)
         val ProperTyAddress = findViewById<EditText>(R.id.property_address)
         val ProperTyCity = findViewById<EditText>(R.id.property_city)
@@ -47,7 +53,18 @@ class CreateProperty : AppCompatActivity() {
         val ProperTyPrice = findViewById<EditText>(R.id.property_price)
         val AdditionalNotes = findViewById<EditText>(R.id.additional_notes)
 
-        //Objeto User para pasar el property
+        /* =============Configuration User property Image=============== */
+        PropertyImg = findViewById(R.id.propertyImages)
+        text = findViewById(R.id.image_info)
+
+        PropertyImg.setOnClickListener {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+            startActivityForResult(intent, 1)
+        }
+
+        //Inicializar el valor de UserPropertyImg
+        UserGlobal.UserPropertyImg = UserPropertyImg("");
 
         //Boolean
         val airCondition = findViewById<Switch>(R.id.air_switch)
@@ -57,31 +74,56 @@ class CreateProperty : AppCompatActivity() {
         val washer = findViewById<Switch>(R.id.washer_swtich)
         val smoking = findViewById<Switch>(R.id.smoking_switch)
 
-        //Comprobaciones de si esta activado o no.
-
         //Comprobacion y validaciones del button para crear un propietario.
         createBtn.setOnClickListener {
-//            if(PropertyName.text.isEmpty() || ProperTyAddress.text.isEmpty() || ProperTyCity.text.isEmpty() || ProperTyDescription.text.isEmpty()
-//                || ProperTyPrice.text.isEmpty())
-//            {
-//                val duration = Toast.LENGTH_SHORT
-//                val toast = Toast.makeText(applicationContext, "You have to complet all the fields.", duration)
-//                toast.show()
-//            }else{
-       // }
+            if(PropertyName.text.isEmpty() || ProperTyAddress.text.isEmpty() || ProperTyCity.text.isEmpty() || ProperTyDescription.text.isEmpty()
+                || ProperTyPrice.text.isEmpty())
+            {
+                val duration = Toast.LENGTH_SHORT
+                val toast = Toast.makeText(applicationContext, "You have to complete all the required fields。", duration)
+                toast.show()
+            }else{
                 val PropertyName = PropertyName.text.toString()
                 val PropertyAddress = ProperTyAddress.text.toString()
                 val PropertyCity = ProperTyCity.text.toString()
                 val PropertyDescription = ProperTyDescription.text.toString()
                 val PropertyPrice = ProperTyPrice.text.toString()
+                val PropertyPriceInt = PropertyPrice.toInt()
                 val AdditionalNotes = AdditionalNotes.text.toString()
-                val UserEmailText = UserGlobal.UserLoginInfo.userEmail;
-               ApiCreateProperty(PropertyName,PropertyAddress,PropertyCity,PropertyDescription, PropertyPrice,AdditionalNotes);
+                //Switch.
+                var airConditionBool: Boolean = false
+                var petFriendlyBool: Boolean = false
+                var parkingBool: Boolean = false
+                var wifiBool: Boolean = false
+                var washerBool: Boolean = false
+                var smokingBool: Boolean = false
+                //Comprobaciones de si esta activado o no.
+                if (airCondition.isChecked) {
+                    airConditionBool = true
+                }
+                if (petFriendly.isChecked) {
+                    petFriendlyBool = true
+                }
+                if (parking.isChecked) {
+                    parkingBool = true
+                }
+                if (wifi.isChecked) {
+                    wifiBool = true
+                }
+                if (washer.isChecked) {
+                    washerBool = true
+                }
+                if (smoking.isChecked) {
+                    smokingBool = true
+                }
+                ApiCreateProperty(PropertyName,PropertyAddress,PropertyCity,PropertyDescription, PropertyPriceInt,AdditionalNotes,airConditionBool
+                ,petFriendlyBool,parkingBool,wifiBool,washerBool,smokingBool);
+        }
         }
     }
 
-    fun ApiCreateProperty(propertyName:String, propertyAddress:String, propertyCity:String, propertyDescription:String,propertyPrice:String,
-        additionalNotes:String){
+    fun ApiCreateProperty(propertyName:String, propertyAddress:String, propertyCity:String, propertyDescription:String,propertyPrice:Int,
+        additionalNotes:String,airCondition:Boolean,petFriendly:Boolean,parking:Boolean,wifi:Boolean,washer:Boolean,smoking:Boolean){
         //Codigo Retrofit:
         CoroutineScope(Dispatchers.IO).launch {
             val interceptor = HttpLoggingInterceptor()
@@ -93,14 +135,16 @@ class CreateProperty : AppCompatActivity() {
             var respuesta = conexion.create(APIRetrofit::class.java)
                 .ApiCreateProperty("createProperty",
                     Property(0,User(0,"","","","","","","",
-                ""),UserGlobal.UserLoginInfo.userEmail,"","","","","",false,false,false,false
-                        ,false,false,0,"de momento no hay nada.."));
+                ""),UserGlobal.UserLoginInfo.userEmail,propertyName,propertyAddress,propertyCity,
+                        propertyDescription,UserGlobal.UserPropertyImg.propertyPath,airCondition,petFriendly,parking,wifi
+                        ,washer,smoking,propertyPrice,additionalNotes));
             withContext(Dispatchers.Main) {
                 //SI el usuario ha creado su cuenta correctamente, pues ira a la pagina de home de applicacion.
                 if (respuesta.isSuccessful) {
                     val duration = Toast.LENGTH_SHORT
                     val toast = Toast.makeText(applicationContext, "Correct!!", duration)
                     toast.show()
+                    finish() //Cerrar el activity.
                 }else {
                     val duration = Toast.LENGTH_SHORT
                     val toast = Toast.makeText(applicationContext, "Incorrect!!", duration)
@@ -108,6 +152,21 @@ class CreateProperty : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    //Guardar la Ruta dentro del objeto
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            val uri = data?.data
+            UserGlobal.UserPropertyImg = UserPropertyImg(uri.toString())
+            Glide.with(this)
+                .load(Uri.parse(UserGlobal.UserPropertyImg.propertyPath))
+                .override(80,80)
+                .into(PropertyImg)
+        }
+        text.setText("");
     }
 
 }

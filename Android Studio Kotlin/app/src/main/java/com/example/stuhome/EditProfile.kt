@@ -43,7 +43,7 @@ class EditProfile : AppCompatActivity() {
         val saveChangesBtn: AppCompatButton = findViewById(R.id.profile_save_changesBtn)
         val backIcon = findViewById<ImageView>(R.id.back_icon)
 
-        /* =============Configuration User Profile Imagen=============== */
+        /* =============Configuration User Profile Image=============== */
 
         //Button cambiar imagen Usuario:
         val changeProfileImgBtn: AppCompatButton = findViewById(R.id.changeProfileimg)
@@ -55,7 +55,7 @@ class EditProfile : AppCompatActivity() {
             startActivityForResult(intent, 1)
         }
 
-        //Inicializar el valor de UserProfile
+        //Inicializar el valor de UserProfileImg
         UserGlobal.UserProfileImg = UserProfileImg("");
 
         /* =========================================================== */
