@@ -44,4 +44,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="delete_property_title">Are you sure want to delete your property?</string>
+    <string name="delete_property_info">Please be careful before proceeding. Are you sure you want to delete your property? This action is irreversible and all data related to the property will be permanently deleted. Please make sure that you really want to proceed before clicking the delete button.</string>
 </resources>

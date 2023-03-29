@@ -23,15 +23,6 @@ class HomeFragment : Fragment() {
         // que en los activitys.
 
         val aboutUsIcon: ImageView = view.findViewById<ImageView>(R.id.aboutUs_icon)
-        val startSeachBtn: AppCompatButton = view.findViewById<AppCompatButton>(R.id.start_searchBtn)
-
-        //Pasar de un fragmento a otro.
-        startSeachBtn.setOnClickListener{
-            val fragmentManager = parentFragmentManager
-            val fragmentTransition = fragmentManager.beginTransaction()
-            fragmentTransition.replace(R.id.frame_layout,SearchFragment())
-            fragmentTransition.commit()
-        }
 
         aboutUsIcon.setOnClickListener{
             val intent = Intent(activity, AboutUs::class.java)
