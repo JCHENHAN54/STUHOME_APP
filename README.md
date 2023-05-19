@@ -25,7 +25,8 @@ En resumen, las herramientas utilizadas y las funcionalidades implementadas en l
 Herramientas: Spring Boot y Android Studio.
 Lenguaje de Programacion: Kotlin, Java.
 
-3.1	Essential minimum functionalities 
+3.1	Essential minimum functionalities
+
 	Access system to the app with account (LOGIN) OF1
 	Access system to the app by creating an account (CREATE ACCOUNT) OF2
 	List of offers by filtering by valuation (HOME PAGE) OF3
@@ -42,6 +43,7 @@ Lenguaje de Programacion: Kotlin, Java.
 	System to show your reservations (MY BOOKINGS) OF14
 
 3.2	Maximum functionalities.
+
 	System to display your favorite offers (MY BOOKINGS) OFX1
 	Conversation system with other users (CHAT PAGE) OFX2
 
