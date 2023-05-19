@@ -25,29 +25,6 @@ En resumen, las herramientas utilizadas y las funcionalidades implementadas en l
 Herramientas: Spring Boot y Android Studio.
 Lenguaje de Programacion: Kotlin, Java.
 
-3.1	Essential minimum functionalities
-
-	Access system to the app with account (LOGIN) OF1
-	Access system to the app by creating an account (CREATE ACCOUNT) OF2
-	List of offers by filtering by valuation (HOME PAGE) OF3
-	Search system to find offers by words (SEARCH PAGE) OF4
-	Information of the selected offer (PROPERTY DETAILS) OF5
-	Profile editing system (EDIT PROFILE) OF6
-	System to change your account password (CHANGE PASSWORD) OF7
-	Button to “log out” of the app (PROFILE PAGE) OF8
-	System to add offers (CREATE PROPERTY) OF9
-	System to eliminate offers (MY PROPERTIES) OF10
-	System to edit offers (EDIT PROPERTY) OF11
-	System for booking an offer (BOOK NOW) OF12
-	System to display all your offers (MY PROPERTIES) OF13
-	System to show your reservations (MY BOOKINGS) OF14
-
-3.2	Maximum functionalities.
-
-	System to display your favorite offers (MY BOOKINGS) OFX1
-	Conversation system with other users (CHAT PAGE) OFX2
-
-
   ![image](https://user-images.githubusercontent.com/57107814/228256782-a7a953c5-d230-4310-9282-e653f268f4d3.png)
 
 En cuanto a la parte de diseño de la interfaz de usuario (UI) y experiencia de usuario (UX), hemos utilizado la herramienta Figma. A través de ella, hemos creado un flowchart de la aplicación que muestra la interconexión de las diferentes pantallas y la navegación del usuario a través de ellas. Este flowchart nos ha permitido visualizar de manera clara la estructura de la aplicación y realizar los ajustes necesarios para mejorar la experiencia del usuario. Si necesitas más información o tienes alguna pregunta adicional, no dudes en hacérmelo saber.
