@@ -1,5 +1,6 @@
 package com.stuhome.app.service.Property;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,11 +48,9 @@ public class PropertyServiceImpl implements PropertyService {
 	}
 
 	@Override
-	@Transactional
-	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		proDao.deleteById(id);
-		
-	}
+    @Transactional
+    public void delete(Property property) {
+        proDao.delete(property);
+    }
 
 }

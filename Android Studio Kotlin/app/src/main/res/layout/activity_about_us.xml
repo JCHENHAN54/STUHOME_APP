@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutUs">
+    tools:context=".Activities.AboutUs">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -27,7 +27,7 @@
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
             android:text="About Us"
             android:textColor="@android:color/white"
             android:textSize="18sp"

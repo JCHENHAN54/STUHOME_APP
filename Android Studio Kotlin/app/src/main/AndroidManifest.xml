@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
     <!-- Internet Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,34 +17,43 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".DeleteProperty"
+            android:name=".Activities.UpdateProperty"
             android:exported="false" />
         <activity
-            android:name=".MyProperty"
+            android:name=".Activities.UserInfo"
             android:exported="false" />
         <activity
-            android:name=".CreateProperty"
+            android:name=".Activities.DeleteProperty"
             android:exported="false" />
         <activity
-            android:name=".AboutUs"
+            android:name=".Activities.PropertyDetails"
             android:exported="false" />
         <activity
-            android:name=".ChangePassword"
+            android:name=".Activities.MyProperty"
             android:exported="false" />
         <activity
-            android:name=".EditProfile"
+            android:name=".Activities.CreateProperty"
             android:exported="false" />
         <activity
-            android:name=".ButtomBar"
+            android:name=".Activities.AboutUs"
             android:exported="false" />
         <activity
-            android:name=".SignUp"
+            android:name=".Activities.ChangePassword"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".Activities.EditProfile"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".Activities.ButtomBar"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Login"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

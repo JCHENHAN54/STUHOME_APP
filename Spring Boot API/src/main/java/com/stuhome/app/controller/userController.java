@@ -1,5 +1,6 @@
 package com.stuhome.app.controller;
 
+import java.sql.Blob;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -122,7 +123,7 @@ public class userController {
 	}
 
 	// Delete User: (Eleminar un usuario y dar baja el usuario en el aplicacion)
-	@DeleteMapping("/user")
+	@DeleteMapping("/deleteUser")
 	public ResponseEntity<?> deleteUser(@RequestBody User user) {
 		List<User> lUser = userService.findByEmail(user.getEmail());
 		// Si existe el username, pues eleminamos ese usuario.
@@ -132,10 +133,9 @@ public class userController {
 			return ResponseEntity.notFound().build();
 		}
 		userService.deleteById(lUser.get(0).getId());
-		System.out.println("Hemos eleminado el usuario" + lUser.get(0).getEmail());
 		return ResponseEntity.ok().build();
 	}
-
+	
 	// Muestra información de perfil de usuario almacenada en la BBDD
 	@GetMapping("/profile/{idUser}")
 	public ResponseEntity<?> read(@PathVariable(value = "idUser") Long userId) {
@@ -175,7 +175,7 @@ public class userController {
 
 	// Mostrar todos los usuarios.
 	// Find all users:
-	@GetMapping
+	@GetMapping("/readAllUsers")
 	public List<User> readAll() {
 		List<User> users = StreamSupport.stream(userService.findAll().spliterator(), false)
 				.collect(Collectors.toList()); // Nos transforme en una lista.

@@ -25,15 +25,17 @@ public class User implements Serializable {
 	private String description;
 	private String studies;
 	private String direction;
-	private String image;
 	
+	//Guardar Imagenes en Mysql.
+	@Lob
+	private byte[] image;
 	
 	//Contructors:
 	public User() {
 	}
 	
 	public User(String password, String name, String surname, String email, String description, String studies,
-			String direction, String image) {
+			String direction, byte[] image) {
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
@@ -124,11 +126,11 @@ public class User implements Serializable {
 		this.direction = direction;
 	}
 
-	public String getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 
@@ -138,7 +140,5 @@ public class User implements Serializable {
 				+ email + ", description=" + description + ", studies=" + studies + ", direction=" + direction
 				+ ", image=" + image + "]";
 	}
-
-	
 	
 }

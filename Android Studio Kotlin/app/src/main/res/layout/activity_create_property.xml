@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CreateProperty">
+    tools:context=".Activities.CreateProperty">
 
     <androidx.appcompat.widget.Toolbar
         android:background="@color/green_light"
@@ -220,7 +220,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="30dp"
-                        android:background="@drawable/baseline_pets_24" />
+                        android:background="@drawable/baseline_pets" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -256,7 +256,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="30dp"
-                        android:background="@drawable/baseline_local_parking_24" />
+                        android:background="@drawable/baseline_local_parking"/>
 
                     <TextView
                         android:layout_width="wrap_content"

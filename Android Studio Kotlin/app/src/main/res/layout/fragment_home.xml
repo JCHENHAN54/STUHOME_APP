@@ -62,22 +62,16 @@
                 android:layout_marginLeft="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Most liked"
+                android:text="Our Properties"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"/>
-            <ImageView
-                android:layout_marginLeft="5dp"
-                android:padding="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/baseline_favorite_24"/>
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:text="Most Liked House or Room"
+            android:text="Choose your first student House or Room"
             android:textStyle="bold"
             android:textColor="@color/green_light"/>
     </LinearLayout>
@@ -86,6 +80,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/gray">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listProperty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
+                />
     </ScrollView>
 </LinearLayout>

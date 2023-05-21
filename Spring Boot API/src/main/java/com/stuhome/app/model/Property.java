@@ -25,7 +25,6 @@ public class Property implements Serializable {
 	private String property_address;
 	private String property_city;
 	private String property_description;
-	private String image;
 	private boolean airConditioning;
 	private boolean petfriendly;
 	private boolean parking;
@@ -33,16 +32,20 @@ public class Property implements Serializable {
 	private boolean washer;
 	private boolean smoking;
 	private int property_price;
+	
+	//Guardar Imagenes en Mysql.
+	@Lob
+	private byte[] image;
 
 	@Column(length = 100)
 	private String additional_notes;
 
 	// Contructors:
-	public Property() {
+	public Property() {	
 	}
 
 	public Property(Long id, User user_id, String userEmail, String property_name, String property_address,
-			String property_city, String property_description, String image, boolean airConditioning,
+			String property_city, String property_description, byte[] image, boolean airConditioning,
 			boolean petfriendly, boolean parking, boolean wifi, boolean washer, boolean smoking, int property_price,
 			String additional_notes) {
 		super();
@@ -120,11 +123,11 @@ public class Property implements Serializable {
 		this.property_description = property_description;
 	}
 
-	public String getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 

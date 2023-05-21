@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.SearchFragment"
-
     android:orientation="vertical"
     >
         <androidx.appcompat.widget.Toolbar
@@ -27,37 +26,24 @@
                     android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
 
-        <RelativeLayout
+        <SearchView
+            android:background="@drawable/search_view_bg"
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/round_back_dark_blue5_15">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:background="@android:color/transparent"
-                    android:hint="Search your property . . ."
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:textColor="#DD272626"
-                    android:textColorHint="#DD8E8B8B"
-                    android:textSize="16sp"
-                    android:id="@+id/search"/>
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"/>
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="10dp"
-                    android:adjustViewBounds="true"
-                    android:padding="10dp"
-                    android:src="@drawable/baseline_search_24"
-                    android:id="@+id/search_icon"/>
-        </RelativeLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listSearchProperty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    />
+        </ScrollView>
 
 </LinearLayout>

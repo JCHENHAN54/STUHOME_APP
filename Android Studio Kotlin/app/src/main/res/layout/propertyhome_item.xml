@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="190dp"
+    android:layout_height="270dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    card_view:cardElevation="6dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"/>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:textColor="@color/black"
+                android:paddingLeft="10dp"
+                android:id="@+id/item_name"
+                android:layout_width="155dp"
+                android:layout_height="wrap_content"
+                android:text="property name"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:paddingLeft="10dp"
+                android:id="@+id/item_address"
+                android:layout_marginTop="5dp"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:text="property address"
+                android:textSize="10dp"/>
+            <TextView
+                android:id="@+id/item_city"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:text="Barcelona"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/item_description"
+            android:maxLines="3"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:textColor="@color/black"
+            android:text="Property Description"/>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:paddingLeft="10dp"
+                android:id="@+id/item_price"
+                android:layout_marginBottom="20dp"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="12dp"
+                android:textColor="@color/green_light"
+                android:text="property price"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

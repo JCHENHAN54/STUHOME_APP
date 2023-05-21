@@ -1,3 +1,5 @@
 package Global
 
-data class UserProfileImg(var profielPath :String)
+import android.graphics.Bitmap
+
+data class UserProfileImg(var profielPath :Bitmap)

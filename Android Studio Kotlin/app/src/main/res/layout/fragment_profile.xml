@@ -17,7 +17,6 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
         <TextView
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
@@ -27,31 +26,26 @@
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
-
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center">
             <ImageView
+                android:layout_marginBottom="12dp"
+                android:scaleType="centerCrop"
                 android:id="@+id/user_img"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/chen"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+                android:src="@drawable/baseline_person_pin_24"/>
             <TextView
                 android:gravity="center"
                 android:id="@+id/profile_username"
@@ -70,51 +64,6 @@
                 android:textColor="@color/green_light"
                 android:textStyle="bold"
                 android:textSize="13dp"></TextView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-            <!--Num Property-->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginRight="30dp"
-                android:orientation="vertical"
-                android:gravity="center">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="20"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="15dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Properties"/>
-            </LinearLayout>
-            <!--Num Favorites-->
-            <LinearLayout
-                android:layout_marginLeft="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:orientation="vertical"
-                android:gravity="center">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="20"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="15dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Favorites"/>
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
@@ -156,7 +105,7 @@
         android:gravity="left"
         android:text="My Properties"
         android:background="@color/white"
-
+        android:id="@+id/myProperty_Btn"
         android:drawableEnd="@drawable/baseline_home_work_24"
         android:textAllCaps="false"
         />
@@ -174,19 +123,6 @@
         android:drawableEnd="@drawable/baseline_add_home_24"
         android:id="@+id/addPropertyBtn"
         />
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="My Bookings"
-        android:padding="15dp"
-        android:gravity="left"
-        android:textAllCaps="false"
-        android:background="@color/white"
-        android:drawableEnd="@drawable/baseline_shopping_cart_24"
-        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_marginLeft="30dp"
@@ -202,6 +138,5 @@
         android:drawableEnd="@drawable/baseline_login_24"
         android:id="@+id/logOutBtn"
         />
-
 
 </LinearLayout>

@@ -1,10 +1,8 @@
 package com.stuhome.app.service.Property;
 
 import java.util.Optional;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
 import com.stuhome.app.model.Property;
 
 public interface PropertyService {
@@ -21,7 +19,7 @@ public interface PropertyService {
 	// Methodo para guardar una entidad , actualizar, y va devolver el usuario.
 	public Property save(Property property);
 
-	// Methodo para borrar un property por Id.
-	public void deleteById(Long id);
+	// Method to delete a property
+    public void delete(Property property);
 
 }

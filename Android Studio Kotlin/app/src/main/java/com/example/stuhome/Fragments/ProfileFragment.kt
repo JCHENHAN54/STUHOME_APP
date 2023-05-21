@@ -1,20 +1,22 @@
 package com.example.stuhome.Fragments
 
 import Global.UserGlobal
-import Global.UserProfileImg
 import Retrofit.APIRetrofit
 import android.content.Intent
-import android.net.Uri
+import android.graphics.BitmapFactory
+import android.graphics.Outline
 import android.os.Bundle
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
 import com.example.stuhome.*
+import com.example.stuhome.Activities.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,6 +26,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.Integer.min
 
 class ProfileFragment : Fragment() {
 
@@ -35,17 +38,20 @@ class ProfileFragment : Fragment() {
         //Aqui es Donde se pone las creaciones de variables y funciones. funciona igualmente
         // que en los activitys.
 
-        val username: TextView = view.findViewById<TextView>(R.id.profile_username);
-        val email: TextView = view.findViewById<TextView>(R.id.profile_email);
-        val profileImg: ImageView = view.findViewById<ImageView>(R.id.user_img);
+        val username: TextView = view.findViewById(R.id.profile_username);
+        val email: TextView = view.findViewById(R.id.profile_email);
+        val profileImg: ImageView = view.findViewById(R.id.user_img);
+
+        //Cambiar el Imagen como un Circulo:
 
         val logOutBtn: AppCompatButton = view.findViewById(R.id.logOutBtn)
-        val editProfileBtn: AppCompatButton = view.findViewById<AppCompatButton>(R.id.edit_profile_btn);
-        val changePassBtn: AppCompatButton = view.findViewById<AppCompatButton>(R.id.change_pass_btn);
-        val createPropertyBtn :AppCompatButton = view.findViewById<AppCompatButton>(R.id.addPropertyBtn);
+        val editProfileBtn: AppCompatButton = view.findViewById(R.id.edit_profile_btn);
+        val changePassBtn: AppCompatButton = view.findViewById(R.id.change_pass_btn);
+        val createPropertyBtn :AppCompatButton = view.findViewById(R.id.addPropertyBtn);
+        val myPropertyBtn :AppCompatButton = view.findViewById(R.id.myProperty_Btn);
 
         //Pasar el username y el password que hemos introducido en Activity Login:
-        val intent = requireActivity().intent;
+        //val intent = requireActivity().intent;
         val loginEmail = UserGlobal.UserLoginInfo.userEmail
         val loginPass = UserGlobal.UserLoginInfo.password
 
@@ -69,6 +75,10 @@ class ProfileFragment : Fragment() {
             val intent = Intent(activity, CreateProperty::class.java)
             startActivity(intent)
         }
+        myPropertyBtn.setOnClickListener {
+            val intent = Intent(activity, MyProperty::class.java)
+            startActivity(intent)
+        }
 
         // Inflate the layout for this fragment
         return view
@@ -86,7 +96,7 @@ class ProfileFragment : Fragment() {
                     GsonConverterFactory.create()
                 ).client(client).build()
             var respuesta = conexion.create(APIRetrofit::class.java)
-                .ApiProfileLogin(
+                    .ApiProfileLogin(
                     "pLogin",
                     User(0, loginPassword, "", "", loginEmail, "", "", "","")
                 );
@@ -97,16 +107,14 @@ class ProfileFragment : Fragment() {
                     //Pasar los infos del usuario al perfil.
                     username.setText(user?.name + " " + user?.surname);
                     email.setText(user?.email);
-                    //Inicializar el valor de Comprobar si el UserProfileImg esta inicializado o no.
-                    try {
-                        //Si esta iniciado pues insertar la ruta al imageView.
-                        Glide.with(this@ProfileFragment)
-                            .load(Uri.parse(user?.image))
-                            .into(profileImg)
-                    } catch (e: UninitializedPropertyAccessException) {
-                        UserGlobal.UserProfileImg = UserProfileImg("")
+                    // Obtener la imagen desde la base de datos, y decodificar usando Base54.
+                    if(user?.image != null){
+                        val imageBytes = Base64.decode(user?.image, Base64.DEFAULT)
+                        val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+                        profileImg.setImageBitmap(bitmap)
+                    }else{
+                        profileImg.setImageResource(R.drawable.baseline_person_pin_24)
                     }
-
                 }
             }
         }
