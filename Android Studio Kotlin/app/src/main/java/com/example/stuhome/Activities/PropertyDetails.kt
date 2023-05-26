@@ -36,6 +36,7 @@ class PropertyDetails : AppCompatActivity() {
         val booking_btn = findViewById<AppCompatButton>(R.id.createProperty_btn)
         val backIcon = findViewById<ImageView>(R.id.back_icon);
 
+        //Coger el objeto property.
         val property = intent.getSerializableExtra("PROPERTY_OBJECT") as GetProperty
 
         val property_name = findViewById<TextView>(R.id.name_property)
@@ -43,7 +44,7 @@ class PropertyDetails : AppCompatActivity() {
         val property_description = findViewById<TextView>(R.id.description_property)
         val property_additional = findViewById<TextView>(R.id.additional_notes_property)
         val property_image = findViewById<ImageView>(R.id.image_property)
-        val property_caracteristics = findViewById<TextView>(R.id.characteristics_property)
+        val property_price = findViewById<TextView>(R.id.property_price)
         val property_user_name = findViewById<TextView>(R.id.name_user_property)
         val property_user_image = findViewById<ImageView>(R.id.image_user_property)
 
@@ -62,6 +63,9 @@ class PropertyDetails : AppCompatActivity() {
         property_washer.visibility = View.GONE
         property_wifi.visibility = View.GONE
 
+        property_price.setText(property.property_price.toString()+"$/month")
+
+
         //Funcion Btn.
         backIcon.setOnClickListener(){
             finish()
@@ -76,7 +80,7 @@ class PropertyDetails : AppCompatActivity() {
                         GsonConverterFactory.create()).client(client).build()
                 var respuesta = conexion.create(APIRetrofit::class.java)
                     .ApiCreateBooking("createBooking", Booking(0,User(0,"","","",""
-                        ,"","","",""), UserGlobal.UserLoginInfo.userEmail,"","",0))
+                        ,"","","",""), UserGlobal.UserLoginInfo.userEmail,property.property_name,property.property_description,property.property_price))
                 withContext(Dispatchers.Main) {
                     if (respuesta.isSuccessful) {
                         val duration = Toast.LENGTH_SHORT
@@ -103,13 +107,6 @@ class PropertyDetails : AppCompatActivity() {
             val imageBytes = Base64.decode(property?.image, Base64.DEFAULT)
             val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
             property_image.setImageBitmap(bitmap)
-        }
-
-        //Si no hay caracteristicas en este Property
-        if(property_air.getVisibility() == View.GONE && property_pet.getVisibility() == View.GONE
-            && property_parking.getVisibility() == View.GONE && property_smoking.getVisibility() == View.GONE
-            && property_washer.getVisibility() == View.GONE && property_wifi.getVisibility() == View.GONE) {
-            property_caracteristics.setText("This property has no features")
         }
 
         //Comprobacion de los features:

@@ -1,6 +1,7 @@
 package com.stuhome.app.controller;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.stuhome.app.model.Booking;
 import com.stuhome.app.model.Property;
@@ -44,22 +46,19 @@ public class bookingController {
 		}
 		return ResponseEntity.status(HttpStatus.CREATED).body(bookService.save(booking));
 	}
-	
-	// Read my properties:
-		@PostMapping("/readMyBookings")
-		public List<Booking> readMyBookings(@RequestBody User user) {
-			List<User> lUser = userService.findByEmail(user.getEmail());
-			User finalUser = new User();
-			for (User e : lUser) {
-				finalUser = e;
-			}
-			final User userFinal = finalUser;
-			List<Booking> bookings = StreamSupport.stream(bookService.findAll().spliterator(), false)
-					.filter(property -> property.getUser_id().getId() == userFinal.getId()).collect(Collectors.toList());
-			return bookings;
-		}
 
-	
-	
+	// Read my bookings:
+	@PostMapping("/readMyBookings")
+	public List<Booking> readMyBookings(@RequestBody User user) {
+		List<User> lUser = userService.findByEmail(user.getEmail());
+		User finalUser = new User();
+		for (User e : lUser) {
+			finalUser = e;
+		}
+		final User userFinal = finalUser;
+		List<Booking> bookings = StreamSupport.stream(bookService.findAll().spliterator(), false)
+				.filter(property -> property.getUser_id().getId() == userFinal.getId()).collect(Collectors.toList());
+		return bookings;
+	}
 
 }

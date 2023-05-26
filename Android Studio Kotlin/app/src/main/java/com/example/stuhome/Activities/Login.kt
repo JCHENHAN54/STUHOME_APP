@@ -113,6 +113,11 @@ class Login : AppCompatActivity() {
             }
         }
     }
+
+    override fun onBackPressed() {
+        // No hacemos nada
+    }
+
 }
 
 

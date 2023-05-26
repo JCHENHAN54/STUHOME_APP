@@ -45,18 +45,17 @@ class UserInfo : AppCompatActivity() {
         val userinfo_img = findViewById<ImageView>(R.id.userinfo_img)
         val userinfo_username = findViewById<TextView>(R.id.userinfo_username)
         val userinfo_email = findViewById<TextView>(R.id.userinfo_email)
-        val userinfo_description = findViewById<TextView>(R.id.userinfo_description)
         val text_dismiss = findViewById<TextView>(R.id.text_dismiss)
 
 
         //Api para leer la lista de properties.
         apiUserInfoPropertyList(propertyList,user_mail.toString(),text_dismiss)
         //Api para leer informacion del usuario.
-        apiReadUserInfo(user_mail.toString(),userinfo_img,userinfo_username,userinfo_email,userinfo_description)
+        apiReadUserInfo(user_mail.toString(),userinfo_img,userinfo_username,userinfo_email)
     }
 
     //Funcion para leer informacion de usuario.
-    fun apiReadUserInfo(usermail: String,userinfo_img: ImageView,userinfo_username:TextView,userinfo_email:TextView,userinfo_description:TextView){
+    fun apiReadUserInfo(usermail: String,userinfo_img: ImageView,userinfo_username:TextView,userinfo_email:TextView){
         //Codigo Retrofit:
         CoroutineScope(Dispatchers.IO).launch {
             val interceptor = HttpLoggingInterceptor()
@@ -78,7 +77,6 @@ class UserInfo : AppCompatActivity() {
                     }
                     userinfo_username.setText(user?.name)
                     userinfo_email.setText(user?.email)
-                    userinfo_description.setText(user?.description)
                 }
             }
         }

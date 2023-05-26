@@ -1,14 +1,16 @@
 package com.stuhome.app.service.Booking;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import com.stuhome.app.model.Booking;
+import com.stuhome.app.model.User;
 
 public interface BookingService {
 	
-	// @return all the properties
+		// @return all the properties
 		public Iterable<Booking> findAll();
 
 		// El methodo donde se puede usar la paginacion
@@ -19,8 +21,5 @@ public interface BookingService {
 
 		// Methodo para guardar una entidad , actualizar, y va devolver el usuario.
 		public Booking save(Booking booking);
-
-		// Method to delete a property
-	    public void delete(Booking booking);
-
+	   
 }

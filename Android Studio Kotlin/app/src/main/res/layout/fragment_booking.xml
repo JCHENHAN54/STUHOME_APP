@@ -26,6 +26,16 @@
             android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
+            />
+    </ScrollView>
 
 </LinearLayout>

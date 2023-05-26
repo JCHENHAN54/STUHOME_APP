@@ -1,5 +1,6 @@
 package com.stuhome.app.service.Booking;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.stuhome.app.dao.BookingDao;
 import com.stuhome.app.model.Booking;
-
 
 @Service
 public class BookingServiceImpl implements BookingService {
@@ -43,12 +43,6 @@ public class BookingServiceImpl implements BookingService {
 	public Booking save(Booking booking) {
 		// TODO Auto-generated method stub
 		return bookDao.save(booking);
-	}
-
-	@Override
-	@Transactional
-	public void delete(Booking property) {
-		bookDao.delete(property);
 	}
 
 }

@@ -190,7 +190,11 @@
                 </LinearLayout>
             </HorizontalScrollView>
             <TextView
-                android:id="@+id/characteristics_property"
+                android:text="Property price"
+                android:textColor="@color/green_light"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:id="@+id/property_price"
                 android:paddingRight="40dp"
                 android:paddingLeft="20dp"
                 android:layout_marginTop="20dp"

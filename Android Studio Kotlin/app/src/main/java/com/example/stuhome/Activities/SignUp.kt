@@ -44,26 +44,47 @@ class SignUp : AppCompatActivity() {
 
         //clicamos el Button create Account.
         createAccountBtn.setOnClickListener {
-            //Pasar variables de Edittext a string.
-            val name:String  = nameEditText.text.toString();
-            val surname:String = surnameEditText.text.toString();
-            val studies:String = studiesEditText.text.toString();
-            val mail:String = mailEditText.text.toString();
-            val direction:String = directionEditText.text.toString();
-            val description:String = descriptionEditText.text.toString();
-            val password:String = passwordEditText.text.toString();
-            val intent: Intent = Intent(this, Login::class.java);
+            val name: String = nameEditText.text.toString()
+            val surname: String = surnameEditText.text.toString()
+            val studies: String = studiesEditText.text.toString()
+            val mail: String = mailEditText.text.toString()
+            val direction: String = directionEditText.text.toString()
+            val description: String = descriptionEditText.text.toString()
+            val password: String = passwordEditText.text.toString()
+            val intent: Intent = Intent(this, Login::class.java)
 
-            //llamar la funcion de registro:
-            if(surname.isEmpty() || mail.isEmpty() || name.isEmpty() ||
-            password.isEmpty() || studies.isEmpty() || direction.isEmpty() || description.isEmpty()){
-            val text = "You have to complete the fields."
-            val duration = Toast.LENGTH_SHORT
-            val toast = Toast.makeText(applicationContext, text, duration)
-            toast.show()
-        }else{
-            apiRegister(name,surname,studies,mail,direction,description,password,intent)
-        }
+            var isValid = true
+
+            if (surname.isEmpty() || mail.isEmpty() || name.isEmpty() ||
+                password.isEmpty() || studies.isEmpty() || direction.isEmpty() || description.isEmpty()
+            ) {
+                val text = "You have to complete all fields."
+                val duration = Toast.LENGTH_SHORT
+                val toast = Toast.makeText(applicationContext, text, duration)
+                toast.show()
+                isValid = false
+            }
+
+            if (password.length < 6) {
+                val text = "The password must have more than 6 characters."
+                val duration = Toast.LENGTH_SHORT
+                val toast = Toast.makeText(applicationContext, text, duration)
+                toast.show()
+                isValid = false
+            }
+
+            val emailPattern = Regex("^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+$")
+            if (!mail.matches(emailPattern)) {
+                val text = "Invalid email format."
+                val duration = Toast.LENGTH_SHORT
+                val toast = Toast.makeText(applicationContext, text, duration)
+                toast.show()
+                isValid = false
+            }
+
+            if (isValid) {
+                apiRegister(name, surname, studies, mail, direction, description, password, intent)
+            }
         }
 
         //clicamos el Button Signin:
@@ -100,6 +121,10 @@ class SignUp : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        // No hacemos nada
     }
 
 }

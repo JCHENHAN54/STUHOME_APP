@@ -3,12 +3,7 @@ package Retrofit
 import model.*
 import okhttp3.ResponseBody
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
-import retrofit2.http.Url
+import retrofit2.http.*
 
 interface APIRetrofit {
 
@@ -75,5 +70,9 @@ interface APIRetrofit {
     //Api Create Booking
     @POST
     suspend fun  ApiCreateBooking(@Url url:String, @Body booking: Booking): Response<FeedBack>
+
+    //Api Read My Bookings
+    @POST
+    suspend fun ApiReadMyBookings(@Url url:String, @Body user: User): Response<List<Booking>>
 
 }
